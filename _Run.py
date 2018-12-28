@@ -16,6 +16,7 @@ from ubuild import menu, main
 ## SECTION: Global Definitions                                  #
 ##==============================================================#
 
+APPADDRPORT = "127.0.0.1:5000"
 SRVWINTITLE = "FlaskVue Demo App Server"
 
 ##==============================================================#
@@ -24,7 +25,7 @@ SRVWINTITLE = "FlaskVue Demo App Server"
 
 def is_running():
     for line in iterout("netstat -a -n"):
-        if "127.0.0.1:5000" in line and "TCP" in line and "LISTENING" in line:
+        if APPADDRPORT in line and "TCP" in line and "LISTENING" in line:
             return True
     return False
 
@@ -43,7 +44,7 @@ def open_browser():
     if not is_running():
         warn("App not yet running!")
         return
-    webbrowser.open("http://127.0.0.1:5000/")
+    webbrowser.open(f"http://{APPADDRPORT}")
 
 @menu
 def kill_server():

@@ -4,7 +4,19 @@
 == Introduction
 This is a simple demo of using http://flask.pocoo.org/[Flask] with https://vuejs.org/[Vue] as well as https://getbootstrap.com/[Bootstrap]. This demo provides a two page web app: the first page lets the user enter their name and the second page lets the user enter a list of favorite movies. The movies associated with each user are saved in memory by the Flask application.
 
-I am by no means a front-end expert so do not refer to this demo for best-practices. This is simply a learning exercise for myself.
+I am definitely not a front-end expert so do not refer to this demo for best-practices. This is simply a learning exercise for myself.
+
+Some cool stuff demoed in this project:
+
+  - Creating a simple CRUD API using Flask-RESTful.
+  - Mixing Flask/Vue templates in the same file.
+
+There is some strange behavior which I haven't quite figured out yet but hope to address at some point:
+
+  - Changing the favorite movies for a user then navigating away and back to the page will not show the updated movie list until after a refresh.
 
 == Requirements
 This demo was written with the Windows OS in mind although it should be easy enough to run on other operating systems. All dependencies should be listed in the main `_Check_Dependencies.bat` which is generated from `install\dependencies.popyaml`. Additionally, a Python requirements file is available at `install\requirements.txt`.
+
+== Usage
+A https://pypi.org/project/ubuild/[Ubuild] script is provided at `_Run.py` which should handle the basics like starting/stopping the server and viewing the app.
