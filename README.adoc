@@ -10,6 +10,7 @@ Some cool stuff demoed in this project:
 
   - Creating a simple CRUD API using Flask-RESTful.
   - Mixing Flask/Vue templates in the same file.
+  - Using the https://www.npmjs.com/package/axios[Axios] library with Vue.
 
 There is some strange behavior which I haven't quite figured out yet but hope to address at some point:
 
