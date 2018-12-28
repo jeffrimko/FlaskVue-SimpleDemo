@@ -1,0 +1,5 @@
+auxly
+flask
+flask-restful
+qprompt
+ubuild

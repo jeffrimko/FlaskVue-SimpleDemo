@@ -1,0 +1,32 @@
+{% extends "base.html.jinja2" %}
+
+{% block title %}User - {{name}}{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='user.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container" id="app">
+  <div class="row">
+    <div class="col">
+      Managing the favorite movies for {{name}}.
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <b>Add Favorite Movie:</b>
+      <div class="form-group">
+        <input type="text" class="form-control" autofocus v-model=movie @keyup.enter="addMovie">
+      </div>
+      <button class="btn btn-primary" @click="addMovie">Add</button>
+    </div>
+    <div class="col">
+      <b>Favorite Movies:</b> (click to remove)
+      <div class="list-group" v-for="m in movies">
+        <a href="#" class="list-group-item list-group-item-action" @click="delMovie">[[m]]</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
