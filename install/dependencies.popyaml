@@ -1,51 +1,48 @@
-# This is a PopPage YAML file used to generate the main `_Check_Dependencies`
-# script.
+# This is a PopPage YAML file used to generate dependency/requirement files.
 
 __opt__:
     command: make
-    inpath: "https://github.com/jeffrimko/PopPageTemplates/blob/master/check_deps_batch/template.jinja2"
-    outpath: ../_Check_Dependencies.bat
+    inpath:
+      - https://github.com/jeffrimko/PopPageTemplates/blob/master/check_deps_batch/template.jinja2
+      - https://github.com/jeffrimko/PopPageTemplates/blob/master/python_req/template.jinja2
+    outpath:
+      - ..\_Check_Dependencies.bat
+      - requirements.txt
 
 deps:
 
-  - name: "Python"
-    desc: "Python language interpreter."
-    ref: "www.python.org"
-    ver: "3.x"
+  - name: 'Python'
+    desc: 'Python language interpreter.'
+    ref: 'www.python.org'
+    ver: '3.x'
     cmd: python -V
 
-  - name: "Ubuild"
-    desc: "Lightweight task runner."
-    ref: "https://pypi.org/project/ubuild/"
-    ver: "latest"
+  - name: 'Ubuild'
+    desc: 'Lightweight task runner.'
+    ref: 'https://pypi.org/project/ubuild/'
+    ver: 'latest'
     cmd: ubuild --help
 
-  - name: "Qprompt"
-    desc: "Python CLI prompt library."
-    ref: "https://pypi.org/project/qprompt/"
-    ver: "latest"
+  - name: 'Qprompt'
+    desc: 'Python CLI prompt library.'
+    ref: 'https://pypi.org/project/qprompt/'
+    ver: 'latest'
     cmd: python -c "import qprompt"
 
-  - name: "Auxly"
-    desc: "Python script helper library."
-    ref: "https://pypi.org/project/auxly/"
-    ver: "latest"
+  - name: 'Auxly'
+    desc: 'Python script helper library.'
+    ref: 'https://pypi.org/project/auxly/'
+    ver: 'latest'
     cmd: python -c "import auxly"
 
-  - name: "Flask"
-    desc: "Python web app library."
-    ref: "https://pypi.org/project/flask/"
-    ver: "latest"
+  - name: 'Flask'
+    desc: 'Python web app library.'
+    ref: 'https://pypi.org/project/flask/'
+    ver: 'latest'
     cmd: python -c "import flask"
 
-  - name: "Flask"
-    desc: "Python web app library."
-    ref: "https://pypi.org/project/flask/"
-    ver: "latest"
-    cmd: python -c "import flask"
-
-  - name: "Flask-RESTful"
-    desc: "Python web API library."
-    ref: "https://pypi.org/project/flask-restful/"
-    ver: "latest"
+  - name: 'Flask-RESTful'
+    desc: 'Python web API library.'
+    ref: 'https://pypi.org/project/flask-restful/'
+    ver: 'latest'
     cmd: python -c "import flask_restful"

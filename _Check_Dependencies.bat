@@ -10,7 +10,6 @@
 ::=============================================================::
 
 set ALL_OK=1
-
 set DEP_OK=1
 call:ChkDep^
     "Python"^
@@ -22,7 +21,6 @@ if %DEP_OK% equ 0 (
     set ALL_OK=0
     pause
 )
-
 set DEP_OK=1
 call:ChkDep^
     "Ubuild"^
@@ -34,7 +32,6 @@ if %DEP_OK% equ 0 (
     set ALL_OK=0
     pause
 )
-
 set DEP_OK=1
 call:ChkDep^
     "Qprompt"^
@@ -46,7 +43,6 @@ if %DEP_OK% equ 0 (
     set ALL_OK=0
     pause
 )
-
 set DEP_OK=1
 call:ChkDep^
     "Auxly"^
@@ -58,7 +54,6 @@ if %DEP_OK% equ 0 (
     set ALL_OK=0
     pause
 )
-
 set DEP_OK=1
 call:ChkDep^
     "Flask"^
@@ -70,19 +65,6 @@ if %DEP_OK% equ 0 (
     set ALL_OK=0
     pause
 )
-
-set DEP_OK=1
-call:ChkDep^
-    "Flask"^
-    "Python web app library."^
-    "https://pypi.org/project/flask/"^
-    "latest"^
-    python -c "import flask"
-if %DEP_OK% equ 0 (
-    set ALL_OK=0
-    pause
-)
-
 set DEP_OK=1
 call:ChkDep^
     "Flask-RESTful"^
@@ -94,7 +76,6 @@ if %DEP_OK% equ 0 (
     set ALL_OK=0
     pause
 )
-
 
 echo --------
 if %ALL_OK% equ 1 (
