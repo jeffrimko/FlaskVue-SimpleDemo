@@ -8,7 +8,7 @@ import time
 import webbrowser
 
 from qprompt import warn
-from auxly.shell import call, iterout
+from auxly.shell import start
 from auxly.filesys import Cwd
 from ubuild import menu, main
 
@@ -17,27 +17,26 @@ from ubuild import menu, main
 ##==============================================================#
 
 APPADDRPORT = "127.0.0.1:5000"
-SRVWINTITLE = "FlaskVue Demo App Server"
+TESTSERVER = None
 
 ##==============================================================#
 ## SECTION: Function Definitions                                #
 ##==============================================================#
 
 def is_running():
-    for line in iterout("netstat -a -n"):
-        if APPADDRPORT in line and "TCP" in line and "LISTENING" in line:
-            return True
-    return False
+    global TESTSERVER
+    return TESTSERVER != None
 
 @menu
 def run():
+    global TESTSERVER
     if not is_running():
         with Cwd("app"):
-            call(f'start "{SRVWINTITLE}" python app.py')
+            TESTSERVER = start("python app.py")
+            time.sleep(3)
+            open_browser()
     else:
         warn("App server already running!")
-    time.sleep(3)
-    open_browser()
 
 @menu
 def open_browser():
@@ -48,8 +47,10 @@ def open_browser():
 
 @menu
 def kill_server():
+    global TESTSERVER
     if is_running():
-        call(f'taskkill /fi "WINDOWTITLE eq {SRVWINTITLE}"')
+        TESTSERVER.kill()
+        TESTSERVER = None
     else:
         warn("Could not find running server!")
 
