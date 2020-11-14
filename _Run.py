@@ -7,7 +7,7 @@
 import time
 import webbrowser
 
-from qprompt import warn
+from qprompt import alert, warn
 from auxly.shell import start
 from auxly.filesys import Cwd
 from ubuild import menu, main
@@ -30,29 +30,36 @@ def is_running():
 @menu
 def run():
     global TESTSERVER
-    if not is_running():
-        with Cwd("app"):
-            TESTSERVER = start("python app.py")
-            time.sleep(3)
-            open_browser()
-    else:
+    if is_running():
         warn("App server already running!")
+        return
+    with Cwd("app"):
+        TESTSERVER = start("python app.py", "__temp-flask.log")
+        alert("Application starting...")
+        time.sleep(3)
+        if TESTSERVER.isrunning():
+            alert("Application started.")
+            browse()
+        else:
+            warn("Issue starting application!")
+            stop()
 
 @menu
-def open_browser():
+def browse():
     if not is_running():
-        warn("App not yet running!")
+        warn("Application not running!")
         return
     webbrowser.open(f"http://{APPADDRPORT}")
 
 @menu
-def kill_server():
+def stop():
     global TESTSERVER
-    if is_running():
-        TESTSERVER.kill()
-        TESTSERVER = None
-    else:
-        warn("Could not find running server!")
+    if not is_running():
+        warn("Application not running!")
+        return
+    TESTSERVER.stop()
+    TESTSERVER = None
+    alert("Application stopped.")
 
 ##==============================================================#
 ## SECTION: Main Body                                           #
